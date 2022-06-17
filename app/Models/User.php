@@ -21,8 +21,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'address',
+        'postcode',
+        'city',
+        'role_id'
     ];
 
+    protected $observables = [
+        'id'
+    ];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -41,4 +48,36 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function labels(): HasMany
+    {
+        return $this->hasMany(Label::class);
+    }
+
+
+    public function isSuperAdmin(): bool
+    {
+        return $this->role === 1;
+    }
+
+    public function isSender(): bool
+    {
+        return $this->role === 2;
+    }
+
+    public function isPacker(): bool
+    {
+        return $this->role === 3;
+    }
+
+    public function isBuyer(): bool
+    {
+        return $this->role === 4;
+    }
 }
