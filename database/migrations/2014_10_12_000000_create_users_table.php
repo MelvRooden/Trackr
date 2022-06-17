@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('address');
-            $table->string('postcode');
             $table->string('city');
+            $table->string('postcode');
             $table->unsignedBigInteger('role_id')->default(4);
             $table->rememberToken();
             $table->timestamps();

@@ -22,12 +22,12 @@ return new class extends Migration
             $table->unsignedBigInteger('sender_user_id')->nullable();
             $table->string('sender_address');
             $table->string('sender_city');
-            $table->string('sender_zipcode');
+            $table->string('sender_postcode');
 
             $table->unsignedBigInteger('receiver_user_id')->nullable();
             $table->string('receiver_address');
             $table->string('receiver_city');
-            $table->string('receiver_zipcode');
+            $table->string('receiver_postcode');
 
             $table->timestamps();
         });
