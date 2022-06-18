@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('labels', function (Blueprint $table) {
             $table->id();
             $table->string('barcode_id')->unique();
-            $table->bigInteger('package_status');
-            $table->bigInteger('carrier_company');
+            $table->unsignedBigInteger('package_status_id');
+            $table->unsignedBigInteger('carrier_user_id');
 
             $table->unsignedBigInteger('sender_user_id')->nullable();
             $table->string('sender_address');
@@ -33,6 +33,14 @@ return new class extends Migration
         });
 
         Schema::table('labels', function (Blueprint $table): void {
+            $table->foreign('package_status_id')
+                ->references('id')
+                ->on('package_statuses');
+
+            $table->foreign('carrier_user_id')
+                ->references('id')
+                ->on('users');
+
             $table->foreign('sender_user_id')
                 ->references('id')
                 ->on('users');

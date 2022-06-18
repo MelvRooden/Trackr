@@ -21,7 +21,7 @@ class PackageStatus extends Model
     ];
 
 
-    public function labels(): HasMany
+    public function labels()
     {
         return $this->hasMany(Label::class);
     }

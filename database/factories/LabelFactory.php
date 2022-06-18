@@ -28,8 +28,8 @@ class LabelFactory extends Factory
 
             return [
                 'barcode_id' => Label::generateLabelCode(),
-                'package_status' => $packageStatus_id,
-                'carrier_company' => $carrierCompany_id,
+                'package_status_id' => $packageStatus_id,
+                'carrier_user_id' => $carrierCompany_id,
                 'sender_user_id' => $sender->id,
                 'sender_address' => $sender->address,
                 'sender_city' => $sender->city,
@@ -42,8 +42,8 @@ class LabelFactory extends Factory
         } else {
             return [
                 'barcode_id' => Label::generateLabelCode(),
-                'package_status' => $packageStatus_id,
-                'carrier_company' => $carrierCompany_id,
+                'package_status_id' => $packageStatus_id,
+                'carrier_user_id' => $carrierCompany_id,
                 'sender_address' => $this->faker->streetAddress,
                 'sender_postcode' => $this->faker->postcode,
                 'sender_city' => $this->faker->city,

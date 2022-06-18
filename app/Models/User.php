@@ -50,12 +50,12 @@ class User extends Authenticatable
     ];
 
 
-    public function role(): BelongsTo
+    public function role()
     {
         return $this->belongsTo(Role::class);
     }
 
-    public function labels(): HasMany
+    public function labels()
     {
         return $this->hasMany(Label::class);
     }
@@ -63,21 +63,21 @@ class User extends Authenticatable
 
     public function isSuperAdmin(): bool
     {
-        return $this->role === 1;
+        return $this->role_id === 1;
     }
 
     public function isSender(): bool
     {
-        return $this->role === 2;
+        return $this->role_id === 2;
     }
 
     public function isPacker(): bool
     {
-        return $this->role === 3;
+        return $this->role_id === 3;
     }
 
     public function isBuyer(): bool
     {
-        return $this->role === 4;
+        return $this->role_id === 4;
     }
 }

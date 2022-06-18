@@ -16,27 +16,23 @@ class PackageStatusSeeder extends Seeder
     public function run()
     {
         PackageStatus::create([
-            'name' => 'Registered',
+            'name' => 'registered',
         ]);
 
         PackageStatus::create([
-            'name' => 'Printed',
+            'name' => 'sortingCenter',
         ]);
 
         PackageStatus::create([
-            'name' => 'SortingCenter',
+            'name' => 'onTheWay',
         ]);
 
         PackageStatus::create([
-            'name' => 'OnTheWay',
+            'name' => 'delivered',
         ]);
 
         PackageStatus::create([
-            'name' => 'Delivered',
-        ]);
-
-        PackageStatus::create([
-            'name' => 'RegisteredForPickUp',
+            'name' => 'registeredForPickUp',
         ]);
     }
 }
