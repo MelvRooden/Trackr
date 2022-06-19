@@ -10,6 +10,8 @@ return [
     'success' => 'Success',
     'error' => 'Onsuccesvol',
 
+    'searchText' => 'Zoek tekst',
+
     'nav' => [
         'userManagement' => 'Gebruikers beheer',
         'labelManagement' => 'label beheer',
@@ -23,6 +25,8 @@ return [
         'update' => 'Bijwerken',
         'newUser' => 'Gebruiker toevoegen',
         'uploadCSV' => 'Upload CSV bestand',
-        'uploadCSV' => 'Pakket informatie ophalen',
+        'searchBar' => 'Pakket informatie ophalen',
+        'search' => 'Zoek',
+        'createLabelPdf' => 'Label PDF',
     ]
 ];

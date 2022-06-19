@@ -63,6 +63,9 @@ return [
         'onTheWay' => 'Onderweg',
         'delivered' => 'Bezorgd',
         'registeredForPickUp' => 'Geregistreerd voor ophalen',
+
+        'name' => 'Pakketstatus',
+        'any' => 'Alle',
     ],
     'review' => [
         'rating' => 'Beoordeling',

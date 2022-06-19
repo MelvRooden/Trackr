@@ -5,6 +5,20 @@
         <div class="d-flex align-items-center">
             <h3>{{__('messages.nav.userManagement')}}</h3>
             <div class="d-flex align-items-center ms-auto me-0">
+                <input class="form-control" id="fullText_input" name="search_param" value="" placeholder="{{__('messages.searchText')}}" dusk="fullText_input" />
+                <select id="package_status_input" class="form-select" name="package_status_input" dusk="package_status">
+                    @foreach($package_statuses as $package_status)
+                        <option value="{{ $package_status->id }}" >{{__('attributes.packageStatus.' . $package_status->name)}}</option>
+                    @endforeach
+                </select>
+                <form id="searchForm" action="/labelManagement/" method="get">
+                    @method('get')
+                    <button onclick="setRoute()" type="submit" class="mt-3 btn btn-success">{{__('messages.buttons.search')}}</button>
+                </form>
+            </div>
+
+
+            <div class="d-flex align-items-center ms-auto me-0">
                 <a class="btn btn-success modal-button" data-bs-toggle="modal" data-bs-target="#create_modal">
                     {{__('messages.buttons.uploadCSV')}}
                 </a>
@@ -27,6 +41,7 @@
                     <th>{{__('attributes.label.sender')}}-{{__('attributes.loc.address')}}</th>
                     <!-- receiver !-->
                     <th>{{__('attributes.label.receiver')}}-{{__('attributes.loc.address')}}</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,12 +63,30 @@
                             <br>
                             {{ $label->receiver_postcode }}
                         </td>
+                        <td>
+                            <form action="{{route('labelManagement.labelPdf', [$label->id])}}" enctype="multipart/form-data" method="get">
+                                @method('get')
+                                <button class="btn btn-primary">{{__('messages.buttons.createLabelPdf')}}</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
+
+            <div class="d-flex justify-content-center">
+                {{ $labels->links() }}
+            </div>
         </div>
     </section>
+
+    <script>
+        function setRoute() {
+            let fullText = document.getElementById('fullText_input').value;
+            let packageStatus = document.getElementById('package_status_input').value;
+            document.getElementById('searchForm').action = `/labelManagement/${packageStatus}/${fullText}`;
+        }
+    </script>
 @endsection
 
 @include('labelManagement.modals.csv_upload_modal')

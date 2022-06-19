@@ -10,7 +10,7 @@
                 @method('post')
                 <div class="modal-body">
 
-{{--                    name--}}
+                    <!-- name !-->
                     <div class="form-floating mb-3">
                         <input class="form-control @error('name', 'store') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="{{__('attributes.user.name')}}" dusk="name" />
                         <label for="name">{{__('attributes.user.name')}}</label>
@@ -21,7 +21,7 @@
                         @enderror
                     </div>
 
-{{--                    email--}}
+                    <!-- email !-->
                     <div class="form-floating mb-3">
                         <input class="form-control @error('email', 'store') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{__('attributes.user.email')}}" dusk="email" />
                         <label for="email">{{__('attributes.user.email')}}</label>
@@ -32,7 +32,7 @@
                         @enderror
                     </div>
 
-{{--                    password--}}
+                    <!-- password !-->
                     <div class="form-floating mb-3">
                         <input class="form-control @error('password', 'store') is-invalid @enderror" name="password" placeholder="{{__('attributes.user.password')}}" dusk="password" />
                         <label for="password">{{__('attributes.user.password')}}</label>
@@ -43,7 +43,7 @@
                         @enderror
                     </div>
 
-{{--                    address--}}
+                    <!-- address !-->
                     <div class="form-floating mb-3">
                         <input class="form-control @error('address', 'store') is-invalid @enderror" name="address" placeholder="{{__('attributes.loc.address')}} 1" dusk="address" />
                         <label for="address">{{__('attributes.loc.address')}} + {{__('attributes.loc.houseNumber')}}</label>
@@ -54,7 +54,7 @@
                         @enderror
                     </div>
 
-{{--                    city--}}
+                    <!-- city !-->
                     <div class="form-floating mb-3">
                         <input class="form-control @error('city', 'store') is-invalid @enderror" name="city" placeholder="{{__('attributes.loc.city')}}" dusk="city" />
                         <label for="city">{{__('attributes.loc.city')}}</label>
@@ -65,7 +65,7 @@
                         @enderror
                     </div>
 
-{{--                    postcode--}}
+                    <!-- postcode !-->
                     <div class="form-floating mb-3">
                         <input class="form-control @error('postcode', 'store') is-invalid @enderror" name="postcode" placeholder="{{__('attributes.loc.postcode')}}" dusk="postcode" />
                         <label for="postcode">{{__('attributes.loc.postcode')}}</label>
@@ -76,11 +76,11 @@
                         @enderror
                     </div>
 
-{{--                    role--}}
+                    <!-- role !-->
                     <div class="form-floating">
                         <select class="form-select" name="role_id">
                             @foreach($roles as $role)
-                                <option value="{{ $role->id }}" {{ $role->id == old('role') ? 'selected' : '' }}>{{__('attributes.role.' . $role->name)}}</option>
+                                <option value="{{ $role->id }}" {{ $role->id == old('role') ? 'selected' : '' }}>{{__('attributes.role.name' . $role->name)}}</option>
                             @endforeach
                         </select>
                         <label for="role">{{__('attributes.role.name')}}</label>

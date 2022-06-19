@@ -63,6 +63,9 @@ return [
         'onTheWay' => 'On the way',
         'delivered' => 'Delivered',
         'registeredForPickUp' => 'Registered for pick up',
+
+        'name' => 'Package Status',
+        'any' => 'Any',
     ],
     'review' => [
         'rating' => 'Rating',

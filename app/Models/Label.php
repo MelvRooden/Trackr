@@ -53,11 +53,12 @@ class Label extends Model
     {
         return [
             'barcode_id' => $this->barcode_id,
-            'package_status_id' => $this->package_status_id,
-            'carrier_name' => $this->carrier->name,
-            'sender_name' => $this->sender->name,
-            'receiver_name' => $this->receiver->name,
-            'receiver_email' => $this->receiver->email,
+            'sender_address' => $this->sender_address,
+            'sender_postcode' => $this->sender_postcode,
+            'sender_city' => $this->sender_city,
+            'receiver_address' => $this->receiver_address,
+            'receiver_postcode' => $this->receiver_postcode,
+            'receiver_city' => $this->receiver_city,
         ];
     }
 

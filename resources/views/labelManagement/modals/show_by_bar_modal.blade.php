@@ -11,7 +11,7 @@
 
                     <!-- barcode_id !-->
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="barcode_id" name="barcode_id" value="{{ old('barcode_id') }}" placeholder="{{__('attributes.label.barcode_id')}}" dusk="barcode_id" />
+                        <input class="form-control" id="barcode_id" name="barcode_id" value="" placeholder="{{__('attributes.label.barcode_id')}}" dusk="barcode_id" />
                         <label for="barcode_id">{{__('attributes.label.barcode_id')}}</label>
                     </div>
 

@@ -10,10 +10,15 @@ use Illuminate\Support\Facades\Hash;
 
 class UserManagementController extends Controller
 {
-    public function index()
+    public function index($search_role_id = 4, $search_param = null)
     {
-        $users = User::orderBy('role_id', 'ASC')->get();
         $roles = Role::orderBy('id', 'DESC')->get();
+
+        if ($search_param != null) {
+            $users = User::search($search_param)->where('role_id', $search_role_id)->orderBy('name', 'ASC')->paginate(5);
+        } else {
+            $users = User::where('role_id', $search_role_id)->orderBy('name', 'ASC')->paginate(5);
+        }
 
         return view('userManagement.index', ['users' => $users], ['roles' => $roles]);
     }

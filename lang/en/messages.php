@@ -10,6 +10,8 @@ return [
     'success' => 'Success',
     'error' => 'Failed',
 
+    'searchText' => 'Search text',
+
     'nav' => [
         'userManagement' => 'User management',
         'labelManagement' => 'Label management',
@@ -24,5 +26,7 @@ return [
         'addUser' => 'Add user',
         'uploadCSV' => 'Upload CSV file',
         'searchBar' => 'Retrieve package info',
+        'search' => 'Search',
+        'createLabelPdf' => 'Label PDF',
     ]
 ];
