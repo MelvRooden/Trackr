@@ -13,7 +13,9 @@ return [
     'nav' => [
         'userManagement' => 'User management',
         'labelManagement' => 'Label management',
+        'myLabelManagement' => 'My Labels',
         'review' => 'Review',
+        'labelByBar' => 'Package status',
     ],
     'buttons' => [
         'cancel' => 'Cancel',
@@ -21,5 +23,6 @@ return [
         'update' => 'Update',
         'addUser' => 'Add user',
         'uploadCSV' => 'Upload CSV file',
+        'searchBar' => 'Retrieve package info',
     ]
 ];

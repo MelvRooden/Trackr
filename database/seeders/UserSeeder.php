@@ -96,6 +96,6 @@ class UserSeeder extends Seeder
             'role_id' => 4
         ]);
 
-        User::factory()->count(10)->create();
+        User::factory()->count(2)->create();
     }
 }

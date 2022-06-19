@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
 
 class Label extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     public $fillable = [
         'barcode_id',
@@ -28,7 +29,6 @@ class Label extends Model
 
     protected $guarded = ['íd'];
 
-
     public function packageStatus()
     {
         return $this->belongsTo(PackageStatus::class);
@@ -47,6 +47,18 @@ class Label extends Model
     public function receiver()
     {
         return $this->belongsTo(User::class, 'receiver_user_id');
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'barcode_id' => $this->barcode_id,
+            'package_status_id' => $this->package_status_id,
+            'carrier_name' => $this->carrier->name,
+            'sender_name' => $this->sender->name,
+            'receiver_name' => $this->receiver->name,
+            'receiver_email' => $this->receiver->email,
+        ];
     }
 
     public static function generateLabelCode(): string

@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Label;
 
+use App\Models\Label;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreCsvRequest extends FormRequest
 {
@@ -13,7 +15,11 @@ class StoreCsvRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        if (Auth::check()) {
+            return $this->user()->can('create', Label::class);
+        }
+
+        return false;
     }
 
     /**

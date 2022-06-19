@@ -5,9 +5,11 @@
         <div class="d-flex align-items-center">
             <h3>{{__('messages.nav.userManagement')}}</h3>
             <div class="d-flex align-items-center ms-auto me-0">
-                <a class="btn btn-success modal-button" data-bs-toggle="modal" data-bs-target="#create_modal">
-                    {{__('messages.buttons.addUser')}}
-                </a>
+                @can('create', App\Models\User::class)
+                    <a class="btn btn-success modal-button" data-bs-toggle="modal" data-bs-target="#create_modal">
+                        {{__('messages.buttons.addUser')}}
+                    </a>
+                @endcan
             </div>
         </div>
         <hr/>
@@ -42,4 +44,6 @@
     </section>
 @endsection
 
-@include('userManagement.modals.create_modal')
+@can('create', App\Models\User::class)
+    @include('userManagement.modals.create_modal')
+@endcan

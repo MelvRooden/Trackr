@@ -9,14 +9,32 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
+            @auth
+                @can('viewAny', App\Models\User::class)
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('userManagement.index') }}">{{__('messages.nav.userManagement')}}</a>
+                    </li>
+                </ul>
+                @endcan
+                @can('viewAny', App\Models\Label::class)
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('labelManagement.index') }}">{{__('messages.nav.labelManagement')}}</a>
+                    </li>
+                </ul>
+                @endcan
+                @can('viewAnyOwn', App\Models\Label::class)
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('labelManagement.MyLabels') }}">{{__('messages.nav.myLabelManagement')}}</a>
+                        </li>
+                    </ul>
+                @endcan
+            @endauth
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('userManagement.index') }}">{{__('messages.nav.userManagement')}}</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('labelManagement.index') }}">{{__('messages.nav.labelManagement')}}</a>
+                    <a class="nav-link" href="{{ route('labelManagement.showByBar') }}">{{__('messages.nav.labelByBar')}}</a>
                 </li>
             </ul>
             <ul class="navbar-nav me-auto">

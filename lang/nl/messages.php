@@ -13,7 +13,9 @@ return [
     'nav' => [
         'userManagement' => 'Gebruikers beheer',
         'labelManagement' => 'label beheer',
+        'myLabelManagement' => 'Mijn labels',
         'review' => 'Beoordeel',
+        'labelByBar' => 'Pakketstatus',
     ],
     'buttons' => [
         'cancel' => 'Annuleren',
@@ -21,5 +23,6 @@ return [
         'update' => 'Bijwerken',
         'newUser' => 'Gebruiker toevoegen',
         'uploadCSV' => 'Upload CSV bestand',
+        'uploadCSV' => 'Pakket informatie ophalen',
     ]
 ];

@@ -71,12 +71,12 @@ class User extends Authenticatable
         return $this->role_id === 2;
     }
 
-    public function isPacker(): bool
+    public function isCarrier(): bool
     {
         return $this->role_id === 3;
     }
 
-    public function isBuyer(): bool
+    public function isReceiver(): bool
     {
         return $this->role_id === 4;
     }

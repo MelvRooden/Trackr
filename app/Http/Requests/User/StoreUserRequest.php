@@ -15,8 +15,11 @@ class StoreUserRequest extends FormRequest
      */
     public function authorize()
     {
-        if (!Auth::check()) return false;
-        if (Auth::user()->isSuperAdmin()) return true;
+        if (Auth::check()) {
+            return $this->user()->can('create', User::class);
+        }
+
+        return false;
     }
 
     /**
@@ -27,12 +30,12 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:40',
-            'email' => 'required|string|email|unique:users|max:120',
-            'password' => 'required|string|max:80',
-            'address' => 'required|string|max:80',
-            'city' => 'required|string|max:80',
-            'postcode' => 'required|string|max:10',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|unique:users|max:255',
+            'password' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'postcode' => 'required|string|max:255',
             'role_id' => 'required|int',
         ];
     }
