@@ -12,7 +12,8 @@ return [
 
     'nav' => [
         'userManagement' => 'User management',
-        'labelManagement' => 'Label management'
+        'labelManagement' => 'Label management',
+        'review' => 'Review',
     ],
     'buttons' => [
         'cancel' => 'Cancel',

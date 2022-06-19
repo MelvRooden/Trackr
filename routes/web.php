@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\LabelManagementController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +52,7 @@ Route::post('/userManagement/store', [UserManagementController::class, 'store'])
 Route::get('/labelManagement', [LabelManagementController::class, 'index'])->name('labelManagement.index');
 Route::post('/labelManagement/storeCSVFile', [LabelManagementController::class, 'storeCSVFile'])->name('labelManagement.storeCSVFile');
 /** End: Label management controller */
+
+/** Start: Review management controller */
+Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
+/** End: Review management controller */

@@ -29,8 +29,17 @@ class UserSeeder extends Seeder
 
         // Sender
         User::create([
-            'name' => 'sender',
+            'name' => 'Sender',
             'email' => 'sender@gmail.com',
+            'password' => Hash::make('password'),
+            'address' => 'straatje 2',
+            'city' => 'stadje',
+            'postcode' => '4135GM',
+            'role_id' => 2
+        ]);
+        User::create([
+            'name' => 'ShopX',
+            'email' => 'ShopX@gmail.com',
             'password' => Hash::make('password'),
             'address' => 'straatje 2',
             'city' => 'stadje',
@@ -40,8 +49,26 @@ class UserSeeder extends Seeder
 
         //Packer
         User::create([
-            'name' => 'packer',
+            'name' => 'Packer',
             'email' => 'packer@gmail.com',
+            'password' => Hash::make('password'),
+            'address' => 'straatje 3',
+            'city' => 'stadje',
+            'postcode' => '4135GM',
+            'role_id' => 3
+        ]);
+        User::create([
+            'name' => 'PostPackX',
+            'email' => 'PostPackX@gmail.com',
+            'password' => Hash::make('password'),
+            'address' => 'straatje 3',
+            'city' => 'stadje',
+            'postcode' => '4135GM',
+            'role_id' => 3
+        ]);
+        User::create([
+            'name' => 'StackSend',
+            'email' => 'StackSend@gmail.com',
             'password' => Hash::make('password'),
             'address' => 'straatje 3',
             'city' => 'stadje',
@@ -53,6 +80,15 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'receiver',
             'email' => 'receiver@gmail.com',
+            'password' => Hash::make('password'),
+            'address' => 'straatje 4',
+            'city' => 'stadje',
+            'postcode' => '4135GM',
+            'role_id' => 4
+        ]);
+        User::create([
+            'name' => 'receiverO',
+            'email' => 'receiverO@gmail.com',
             'password' => Hash::make('password'),
             'address' => 'straatje 4',
             'city' => 'stadje',

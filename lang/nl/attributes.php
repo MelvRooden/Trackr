@@ -33,6 +33,8 @@ return [
         'sender_user_id' => 'Verzender',
         'receiver_user_id' => 'Ontvanger',
 
+        'csvUploadInput' => 'Selecteer een CSV bestand',
+
         'sender' => 'Sender',
         'receiver' => 'Receiver',
         'address' => 'address',
@@ -61,5 +63,11 @@ return [
         'onTheWay' => 'Onderweg',
         'delivered' => 'Bezorgd',
         'registeredForPickUp' => 'Geregistreerd voor ophalen',
+    ],
+    'review' => [
+        'rating' => 'Beoordeling',
+        'comment' => 'Opmerking',
+
+        'leaveReview' => 'Laat een beoordeling achter'
     ]
 ];

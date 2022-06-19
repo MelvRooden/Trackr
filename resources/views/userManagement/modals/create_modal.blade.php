@@ -78,7 +78,7 @@
 
 {{--                    role--}}
                     <div class="form-floating">
-                        <select class="form-select" name="{{__('attributes.role.name')}}">
+                        <select class="form-select" name="role_id">
                             @foreach($roles as $role)
                                 <option value="{{ $role->id }}" {{ $role->id == old('role') ? 'selected' : '' }}>{{__('attributes.role.' . $role->name)}}</option>
                             @endforeach

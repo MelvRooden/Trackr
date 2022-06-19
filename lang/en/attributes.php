@@ -63,5 +63,11 @@ return [
         'onTheWay' => 'On the way',
         'delivered' => 'Delivered',
         'registeredForPickUp' => 'Registered for pick up',
+    ],
+    'review' => [
+        'rating' => 'Rating',
+        'comment' => 'Comment',
+
+        'leaveReview' => 'Leave a review'
     ]
 ];

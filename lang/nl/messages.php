@@ -10,17 +10,16 @@ return [
     'success' => 'Success',
     'error' => 'Onsuccesvol',
 
-	'labels' => [
-		'packageId' => 'Pakket ID',
-	],
     'nav' => [
         'userManagement' => 'Gebruikers beheer',
-        'labelManagement' => 'label beheer'
+        'labelManagement' => 'label beheer',
+        'review' => 'Beoordeel',
     ],
     'buttons' => [
         'cancel' => 'Annuleren',
         'create' => 'Toevoegen',
         'update' => 'Bijwerken',
         'newUser' => 'Gebruiker toevoegen',
+        'uploadCSV' => 'Upload CSV bestand',
     ]
 ];

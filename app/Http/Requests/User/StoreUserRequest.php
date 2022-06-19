@@ -33,7 +33,6 @@ class StoreUserRequest extends FormRequest
             'address' => 'required|string|max:80',
             'city' => 'required|string|max:80',
             'postcode' => 'required|string|max:10',
-            'phone' => 'required|string',
             'role_id' => 'required|int',
         ];
     }

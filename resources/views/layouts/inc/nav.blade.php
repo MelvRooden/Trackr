@@ -19,6 +19,11 @@
                     <a class="nav-link" href="{{ route('labelManagement.index') }}">{{__('messages.nav.labelManagement')}}</a>
                 </li>
             </ul>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('review.index') }}">{{__('messages.nav.review')}}</a>
+                </li>
+            </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">

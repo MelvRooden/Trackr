@@ -19,30 +19,30 @@
             <table class="table">
                 <thead class="table-dark">
                 <tr>
+                    <th>Id</th>
                     <th>{{__('attributes.label.barcode_id')}}</th>
                     <th>{{__('attributes.label.package_status')}}</th>
                     <th>{{__('attributes.label.carrier_user_id')}}</th>
-{{--                    sender--}}
+                    <!-- sender !-->
                     <th>{{__('attributes.label.sender')}}-{{__('attributes.loc.address')}}</th>
-{{--                    <th>{{__('attributes.label.sender')}}-{{__('attributes.loc.postcode')}}</th>--}}
-{{--                    receiver--}}
+                    <!-- receiver !-->
                     <th>{{__('attributes.label.receiver')}}-{{__('attributes.loc.address')}}</th>
-{{--                    <th>{{__('attributes.label.receiver')}}-{{__('attributes.loc.postcode')}}</th>--}}
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($labels as $label)
                     <tr>
+                        <td>{{ $label->id }}</td>
                         <td>{{ $label->barcode_id }}</td>
                         <td>{{__('attributes.packageStatus.' . $label->packageStatus->name)}}</td>
                         <td>{{ $label->carrier->name }}</td>
-{{--                        sender--}}
+                        <!-- sender !-->
                         <td>
                             {{ $label->sender_address }}, {{ $label->sender_city }}
                             <br>
                             {{ $label->sender_postcode }}
                         </td>
-{{--                        receiver--}}
+                        <!-- receiver !-->
                         <td>
                             {{ $label->receiver_address }}, {{ $label->receiver_city }}
                             <br>

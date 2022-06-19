@@ -26,7 +26,8 @@ class UserManagementController extends Controller
             'password' => Hash::make($request['password']),
             'address' => $request['address'],
             'postcode' => $request['postcode'],
-            'city' => $request['city']
+            'city' => $request['city'],
+            'role_id' => $request['role_id']
         ]);
 
         return back()->with('messages.success', 'attributes.user.success.added');

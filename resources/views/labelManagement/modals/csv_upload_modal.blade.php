@@ -5,14 +5,15 @@
                 <h5 class="modal-title">{{__('attributes.label.header.uploadCSV')}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ route('labelManagement.storeCSVFile') }}" method="post">
+            <form action="{{ route('labelManagement.storeCSVFile') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('post')
                 <div class="modal-body">
 
-{{--                    csv--}}
+                    <!-- csv !-->
                     <div class="form-floating mb-3">
-                        <input class="form-control @error('csvFile', 'store') is-invalid @enderror" name="csvFile" type="file" placeholder="{{__('attributes.label.csvUploadInput')}}" dusk="csvFile" />
+                        <input class="form-control @error('csvFile', 'store') is-invalid @enderror" name="csvFile" type="file"
+                               placeholder="{{__('attributes.label.csvUploadInput')}}" dusk="csvFile" required />
                         <label for="csvFile">{{__('attributes.label.csvUploadInput')}}</label>
                         @error('csvFile', 'store')
                         <span class="invalid-feedback" role="alert">
