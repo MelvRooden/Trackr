@@ -76,7 +76,7 @@
                             </form>
                         </div>
                     </li>
-                @endguest
+                @endGuest
                 <!-- Language selector -->
                 <li class="nav-item dropdown" >
                     <a id="navbarDropdown" dusk="language-dropdown" class="nav-link dropdown-toggle" href="#" role="button"

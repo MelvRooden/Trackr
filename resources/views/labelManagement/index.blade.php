@@ -3,7 +3,7 @@
 @section('content')
     <section class="container">
         <div class="d-flex align-items-center">
-            <h3>{{__('messages.nav.userManagement')}}</h3>
+            <h3>{{__('messages.nav.labelManagement')}}</h3>
             <div class="d-flex align-items-center ms-auto me-0">
                 <input class="form-control" id="fullText_input" name="search_param" value="" placeholder="{{__('messages.searchText')}}" dusk="fullText_input" />
                 <select id="package_status_input" class="form-select" name="package_status_input" dusk="package_status">
@@ -41,7 +41,14 @@
                     <th>{{__('attributes.label.sender')}}-{{__('attributes.loc.address')}}</th>
                     <!-- receiver !-->
                     <th>{{__('attributes.label.receiver')}}-{{__('attributes.loc.address')}}</th>
-                    <th></th>
+                    <th>
+                        @if ($labels->count() > 0)
+                            <form action="{{ route('labelManagement.labelPdfBulk') }}" method="get">
+                                @method('get')
+                                <button type="submit" class="btn btn-success">{{__('messages.buttons.createLabelPdfBulk')}}</button>
+                            </form>
+                        @endif
+                    </th>
                 </tr>
                 </thead>
                 <tbody>

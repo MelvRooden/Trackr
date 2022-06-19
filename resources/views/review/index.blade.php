@@ -3,7 +3,7 @@
 @section('content')
     <section class="container">
         <div class="d-flex align-items-center">
-            <h3>{{__('attributes.review.leaveReview')}}</h3>
+            <h3>{{__('attributes.review.labelByBar')}}</h3>
         </div>
         <hr/>
     </section>

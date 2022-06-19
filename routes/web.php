@@ -46,21 +46,21 @@ Route::get('/language/{locale}', function ($locale) {
 });
 /** End: Language selector */
 
-/** Start: User management controller */
-Route::get('/userManagement/{role_id?}/{fullText?}', [UserManagementController::class, 'index'])->can('viewAny', User::class)->name('userManagement.index');
-Route::post('/userManagement/store', [UserManagementController::class, 'store'])->can('create', User::class)->name('userManagement.store');
-/** End: User management controller */
-
 /** Start: Label management controller */
 Route::get('/labelManagement/barCodeSearch/{id?}', [LabelManagementController::class, 'showByBar'])->name('labelManagement.showByBar');
 
-Route::get('/labelManagement/{package_status_id?}/{fullText?}', [LabelManagementController::class, 'index'])->can('viewAny', Label::class)->name('labelManagement.index');
 Route::get('/labelManagement/myLabels', [LabelManagementController::class, 'index'])->can('viewAnyOwn', Label::class)->name('labelManagement.MyLabels');
+Route::get('/labelManagement/{package_status_id?}/{fullText?}', [LabelManagementController::class, 'index'])->can('viewAny', Label::class)->name('labelManagement.index');
 Route::post('/labelManagement/storeCSVFile', [LabelManagementController::class, 'storeCSVFile'])->can('create', Label::class)->name('labelManagement.storeCSVFile');
 Route::post('/labelManagement/label/{id}/setStatus', [LabelManagementController::class, 'setStatus'])->can('updateStatus', Label::class)->name('labelManagement.label.updateStatus');
 Route::get('/labelManagement/label/{id?}/pdf', [LabelManagementController::class, 'labelPdf'])->can('viewPdfOwn', Label::class)->name('labelManagement.labelPdf');
 Route::get('/labelManagement/label/pdfBulk', [LabelManagementController::class, 'labelPdfBulk'])->can('viewPdfOwn', Label::class)->name('labelManagement.labelPdfBulk');
 /** End: Label management controller */
+
+/** Start: User management controller */
+Route::get('/userManagement/{role_id?}/{fullText?}', [UserManagementController::class, 'index'])->can('viewAny', User::class)->name('userManagement.index');
+Route::post('/userManagement/store', [UserManagementController::class, 'store'])->can('create', User::class)->name('userManagement.store');
+/** End: User management controller */
 
 /** Start: Review management controller */
 Route::get('/review', [ReviewController::class, 'index'])->name('review.index');

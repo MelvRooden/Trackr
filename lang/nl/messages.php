@@ -28,5 +28,6 @@ return [
         'searchBar' => 'Pakket informatie ophalen',
         'search' => 'Zoek',
         'createLabelPdf' => 'Label PDF',
+        'createLabelPdfBulk' => 'Label PDF massaal',
     ]
 ];

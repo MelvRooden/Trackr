@@ -28,5 +28,6 @@ return [
         'searchBar' => 'Retrieve package info',
         'search' => 'Search',
         'createLabelPdf' => 'Label PDF',
+        'createLabelPdfBulk' => 'Label PDF Bulk',
     ]
 ];
