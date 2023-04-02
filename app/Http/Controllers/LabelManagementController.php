@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Business\LabelLogic;
 use App\Business\LabelPdfLogic;
 use App\Http\Requests\Label\StoreCsvRequest;
+use App\Http\Requests\Label\StoreRequest;
+use App\Http\Resources\LabelResource;
 use App\Imports\LabelImportCsv;
 use App\Models\Label;
 use App\Models\PackageStatus;
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
-
 
 class LabelManagementController extends Controller
 {
@@ -35,19 +40,21 @@ class LabelManagementController extends Controller
                 $labels = Label::where('package_status_id', $search_ps_id)
                     ->orderBy('carrier_user_id', 'ASC')
                     ->paginate(5);
+
+
             }
         } else if ($search_param) {
-            $labels = Label::search($search_param)
+            $labels = Label::search($search_param)->get()->toQuery()
                 ->where('package_status_id', $search_ps_id)
-                ->orWhere('sender_user_id', $user_id)
-                ->orWhere('receiver_user_id',$user_id)
-                ->where('carrier_user_id', $user_id)
+                ->where('sender_user_id', $user_id)
+                ->orWhere('receiver_user_id', $user_id)
+                ->orWhere('carrier_user_id', $user_id)
                 ->orderBy('carrier_user_id', 'ASC')
                 ->paginate(5);
         } else {
             $labels = Label::where('carrier_user_id', $user_id)
                 ->where('package_status_id', $search_ps_id)
-                ->orWhere('sender_user_id', $user_id)
+                ->where('sender_user_id', $user_id)
                 ->orWhere('receiver_user_id', $user_id)
                 ->orderBy('carrier_user_id', 'ASC')
                 ->paginate(5);
@@ -145,15 +152,33 @@ class LabelManagementController extends Controller
     /**
      * @return void
      */
-    public function apiStoreMyLabel()
+    public function apiStoreMyLabel(StoreRequest $request) : View|Factory|LabelResource|Application
     {
+        $user = $request->user();
+        $carrier_id = User::where('name', $request->validated("carrier_name"))->first()->id;
 
+        $labelData = array_merge($request->validated(), [
+            'barcode_id' => Label::generateLabelCode(),
+            'package_status_id' => 1,
+            'carrier_user_id' => $carrier_id,
+            'sender_user_id' => $user->id,
+            'sender_address' => $user->address,
+            'sender_city' => $user->city,
+            'sender_postcode' => $user->postcode
+        ]);
+
+        $label = Label::create($labelData);
+
+        if ($request->expectsJson())
+        {
+            return new LabelResource($label);
+        }
     }
 
     /**
      * @return void
      */
-    public function apiUpdateStatus()
+    public function apiMyLabelStatus()
     {
 
     }

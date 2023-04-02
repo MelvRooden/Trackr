@@ -2,10 +2,26 @@
 
 namespace App\Models;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Laravel\Scout\Searchable;
+
+/**
+ * @property string $barcode_id
+ * @property int $package_status_id
+ * @property int $carrier_user_id
+ *
+ * @property int $sender_user_id
+ * @property string $sender_address
+ * @property string $sender_postcode
+ * @property string $sender_city
+ *
+ * @property string $receiver_address
+ * @property string $receiver_postcode
+ * @property string $receiver_city
+ * @method static self create(array $attributes = [])
+ */
 
 class Label extends Model
 {

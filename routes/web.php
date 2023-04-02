@@ -36,15 +36,6 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 /** Start: Language selector */
-//Route::get('/language/{locale}', function ($locale) {
-//    if (!in_array($locale, ['en', 'nl'])) {
-//        App::setlocale('en');
-//        return view('welcome');
-//    }
-//    App::setlocale($locale);
-//    return redirect()->back();
-//});
-
 Route::get('/language/{locale}', function ($locale) {
     if (!in_array($locale, ['en', 'nl'])) {
         App::setlocale('en');
@@ -77,9 +68,9 @@ Route::post('/userManagement/store', [UserManagementController::class, 'store'])
 Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
 /** End: Review management controller */
 
-Route::get('/tokens/create', function (Request $request) {
+/** Start: Api token */
+Route::get('/token/new', function (Request $request) {
     $token = $request->user()->createToken('token');
-
     return $token->plainTextToken;
-})->name('getApiToken')
-    ->middleware('auth');
+})->can('viewPdfOwn', Label::class)->name('token.new')->middleware('auth');
+/** End: Api token */

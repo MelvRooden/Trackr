@@ -42,6 +42,13 @@
                     <a class="nav-link" href="{{ route('review.index') }}">{{__('messages.nav.review')}}</a>
                 </li>
             </ul>
+            @can('viewPdfOwn', App\Models\Label::class)
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('token.new') }}">{{__('messages.nav.tokenNew')}}</a>
+                    </li>
+                </ul>
+            @endcan
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">

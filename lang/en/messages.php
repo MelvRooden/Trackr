@@ -18,6 +18,7 @@ return [
         'myLabelManagement' => 'My Labels',
         'review' => 'Review',
         'labelByBar' => 'Package status',
+        'tokenNew' => 'New token',
     ],
     'buttons' => [
         'cancel' => 'Cancel',

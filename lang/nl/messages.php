@@ -18,6 +18,7 @@ return [
         'myLabelManagement' => 'Mijn labels',
         'review' => 'Beoordeel',
         'labelByBar' => 'Pakketstatus',
+        'tokenNew' => 'Nieuwe token',
     ],
     'buttons' => [
         'cancel' => 'Annuleren',
