@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Business\LabelLogic;
 use App\Business\LabelPdfLogic;
 use App\Http\Requests\Label\StateChangeRequest;
 use App\Http\Requests\Label\StoreCsvRequest;
@@ -22,11 +21,11 @@ use Maatwebsite\Excel\Facades\Excel;
 class LabelManagementController extends Controller
 {
     /**
-     * @param $search_ps_id
+     * @param int $search_ps_id
      * @param $search_param
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index($search_ps_id = 1, $search_param = null)
+    public function index(int $search_ps_id = 1, $search_param = null)
     {
         $user_id = Auth::id();
         $package_statuses = PackageStatus::All();
@@ -41,21 +40,25 @@ class LabelManagementController extends Controller
                 $labels = Label::where('package_status_id', $search_ps_id)
                     ->orderBy('carrier_user_id', 'ASC')
                     ->paginate(5);
-
-
             }
         } else if ($search_param) {
-            $labels = Label::search($search_param)->get()->toQuery()
-                ->where('package_status_id', $search_ps_id)
-                ->where('sender_user_id', $user_id)
-                ->orWhere('receiver_user_id', $user_id)
-                ->orWhere('carrier_user_id', $user_id)
-                ->orderBy('carrier_user_id', 'ASC')
-                ->paginate(5);
+            $labels = Label::search($search_param)->get();
+                if (!$labels->isEmpty())
+                {
+                    $labels = $labels->toQuery()
+                        ->where('package_status_id', $search_ps_id)
+                        ->where('sender_user_id', $user_id)
+                        ->orWhere('carrier_user_id', $user_id)
+                        ->orWhere('receiver_user_id', $user_id)
+                        ->orderBy('carrier_user_id', 'ASC')
+                        ->paginate(5);
+                } else {
+                    $labels = Label::where('barcode_id', '')->paginate(5);
+                }
         } else {
-            $labels = Label::where('carrier_user_id', $user_id)
+            $labels = Label::where('sender_user_id', $user_id)
                 ->where('package_status_id', $search_ps_id)
-                ->where('sender_user_id', $user_id)
+                ->orWhere('carrier_user_id', $user_id)
                 ->orWhere('receiver_user_id', $user_id)
                 ->orderBy('carrier_user_id', 'ASC')
                 ->paginate(5);
@@ -73,22 +76,6 @@ class LabelManagementController extends Controller
         $labels = Label::where('barCode_id', $barCode_id)->get();
 
         return view('labelManagement.showByBar', ['labels' => $labels]);
-    }
-
-    /**
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function updateStatus(Request $request, $id)
-    {
-        $label = Label::findOrFail($id);
-
-        $label->package_status_id = $request->package_status_id;
-
-        $label->save();
-
-        return back();
     }
 
     /**
@@ -120,26 +107,26 @@ class LabelManagementController extends Controller
 
     public function labelPdfBulk()
     {
-        $authRole = Auth::user()->role_id;
+        $user_id = Auth::id();
 
-        if ($authRole == 1) {
-            $labels = Label::where('package_status_id', 1)
-                ->orderBy('carrier_user_id', 'ASC');
-        } else if ($authRole == 2) {
-            $labels = Label::where('sender_user_id', Auth::id())
-                ->where('package_status_id', 1)
-                ->orderBy('carrier_user_id', 'ASC');
-        } else if ($authRole == 3) {
-            $labels = Label::where('carrier_user_id', Auth::id())
-                ->where('package_status_id', 1)
+        if (Auth::user()->can('viewAny', User::class)) {
+            $labels = Label::orderBy('carrier_user_id', 'ASC');
+        } else if (Auth::user()->can('create', Label::class)) {
+            $labels = Label::where('sender_user_id', $user_id)
+                ->orWhere('carrier_user_id', $user_id)
                 ->orderBy('carrier_user_id', 'ASC');
         } else {
             return back();
         }
 
-        $logic = new LabelPdfLogic($labels->all());
+        $logic = new LabelPdfLogic($labels->get()->all());
 
         return $logic->createLabelPdf();
+    }
+
+    public function setForPickup()
+    {
+
     }
 
     /**

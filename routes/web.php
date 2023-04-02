@@ -55,8 +55,12 @@ Route::get('/labelManagement/myLabels', [LabelManagementController::class, 'inde
 Route::get('/labelManagement/{package_status_id?}/{fullText?}', [LabelManagementController::class, 'index'])->can('viewAnyOwn', Label::class)->name('labelManagement.index');
 Route::post('/labelManagement/storeCSVFile', [LabelManagementController::class, 'storeCSVFile'])->can('create', Label::class)->name('labelManagement.storeCSVFile');
 Route::post('/labelManagement/label/{id}/setStatus', [LabelManagementController::class, 'setStatus'])->can('updateStatus', Label::class)->name('labelManagement.label.updateStatus');
-Route::get('/labelManagement/label/{id?}/pdf', [LabelManagementController::class, 'labelPdf'])->can('viewPdfOwn', Label::class)->name('labelManagement.labelPdf');
-Route::get('/labelManagement/label/pdfBulk', [LabelManagementController::class, 'labelPdfBulk'])->can('viewPdfOwn', Label::class)->name('labelManagement.labelPdfBulk');
+Route::get('/labelManagementPdf/label/{id?}/pdf', [LabelManagementController::class, 'labelPdf'])->can('viewPdfOwn', Label::class)->name('labelManagement.labelPdf');
+Route::get('/labelManagementPdf/labelBulk/pdf', [LabelManagementController::class, 'labelPdfBulk'])->can('viewPdfOwn', Label::class)->name('labelManagement.labelPdfBulk');
+/** End: Label management controller */
+
+/** Start: User management controller */
+Route::get('/pickupManagement/setPickup/label/{id}', [LabelManagementController::class, 'labelPdfBulk'])->can('create', Label::class)->name('pickupManagement.setPickup');
 /** End: Label management controller */
 
 /** Start: User management controller */

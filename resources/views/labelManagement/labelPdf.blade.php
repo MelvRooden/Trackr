@@ -1,3 +1,14 @@
+<style>
+    .page-break-after {
+        page-break-after: always;
+    }
+
+    .my-0 {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+</style>
+
 <div class="labelsContainer">
     @foreach($labels as $label)
 

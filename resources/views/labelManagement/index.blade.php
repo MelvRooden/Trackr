@@ -44,7 +44,7 @@
                     <!-- receiver !-->
                     <th>{{__('attributes.label.receiver')}}-{{__('attributes.loc.address')}}</th>
                     <th>
-                        @can('viewAny', App\Models\Label::class)
+                        @can('create', App\Models\Label::class)
                             @if ($labels->count() > 0)
                                 <form action="{{ route('labelManagement.labelPdfBulk') }}" method="get">
                                     @method('get')
