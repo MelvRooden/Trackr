@@ -80,7 +80,7 @@
                     <div class="form-floating">
                         <select class="form-select" name="role_id">
                             @foreach($roles as $role)
-                                <option value="{{ $role->id }}" {{ $role->id == old('role') ? 'selected' : '' }}>{{__('attributes.role.name' . $role->name)}}</option>
+                                <option value="{{ $role->id }}" {{ $role->id == old('role') ? 'selected' : '' }}>{{__('attributes.role.' . $role->name)}}</option>
                             @endforeach
                         </select>
                         <label for="role">{{__('attributes.role.name')}}</label>

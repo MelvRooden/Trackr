@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 // Controllers
 use App\Http\Controllers\HomeController;
@@ -35,14 +36,24 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 /** Start: Language selector */
+//Route::get('/language/{locale}', function ($locale) {
+//    if (!in_array($locale, ['en', 'nl'])) {
+//        App::setlocale('en');
+//        return view('welcome');
+//    }
+//    App::setlocale($locale);
+//    return redirect()->back();
+//});
+
 Route::get('/language/{locale}', function ($locale) {
     if (!in_array($locale, ['en', 'nl'])) {
         App::setlocale('en');
+        Session::put('locale', 'en');
         return view('welcome');
     }
     App::setlocale($locale);
-    return redirect()->back();
-
+    Session::put('locale', $locale);
+    return back();
 });
 /** End: Language selector */
 
@@ -50,7 +61,7 @@ Route::get('/language/{locale}', function ($locale) {
 Route::get('/labelManagement/barCodeSearch/{id?}', [LabelManagementController::class, 'showByBar'])->name('labelManagement.showByBar');
 
 Route::get('/labelManagement/myLabels', [LabelManagementController::class, 'index'])->can('viewAnyOwn', Label::class)->name('labelManagement.MyLabels');
-Route::get('/labelManagement/{package_status_id?}/{fullText?}', [LabelManagementController::class, 'index'])->can('viewAny', Label::class)->name('labelManagement.index');
+Route::get('/labelManagement/{package_status_id?}/{fullText?}', [LabelManagementController::class, 'index'])->can('viewAnyOwn', Label::class)->name('labelManagement.index');
 Route::post('/labelManagement/storeCSVFile', [LabelManagementController::class, 'storeCSVFile'])->can('create', Label::class)->name('labelManagement.storeCSVFile');
 Route::post('/labelManagement/label/{id}/setStatus', [LabelManagementController::class, 'setStatus'])->can('updateStatus', Label::class)->name('labelManagement.label.updateStatus');
 Route::get('/labelManagement/label/{id?}/pdf', [LabelManagementController::class, 'labelPdf'])->can('viewPdfOwn', Label::class)->name('labelManagement.labelPdf');
@@ -65,3 +76,10 @@ Route::post('/userManagement/store', [UserManagementController::class, 'store'])
 /** Start: Review management controller */
 Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
 /** End: Review management controller */
+
+Route::get('/tokens/create', function (Request $request) {
+    $token = $request->user()->createToken('token');
+
+    return $token->plainTextToken;
+})->name('getApiToken')
+    ->middleware('auth');

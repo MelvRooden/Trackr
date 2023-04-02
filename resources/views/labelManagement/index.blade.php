@@ -4,6 +4,7 @@
     <section class="container">
         <div class="d-flex align-items-center">
             <h3>{{__('messages.nav.labelManagement')}}</h3>
+
             <div class="d-flex align-items-center ms-auto me-0">
                 <input class="form-control" id="fullText_input" name="search_param" value="" placeholder="{{__('messages.searchText')}}" dusk="fullText_input" />
                 <select id="package_status_input" class="form-select" name="package_status_input" dusk="package_status">
@@ -17,12 +18,13 @@
                 </form>
             </div>
 
-
-            <div class="d-flex align-items-center ms-auto me-0">
-                <a class="btn btn-success modal-button" data-bs-toggle="modal" data-bs-target="#create_modal">
-                    {{__('messages.buttons.uploadCSV')}}
-                </a>
-            </div>
+            @can('create', App\Models\Label::class)
+                <div class="d-flex align-items-center ms-auto me-0">
+                    <a class="btn btn-success modal-button" data-bs-toggle="modal" data-bs-target="#create_modal">
+                        {{__('messages.buttons.uploadCSV')}}
+                    </a>
+                </div>
+            @endcan
         </div>
         <hr/>
     </section>
@@ -42,12 +44,14 @@
                     <!-- receiver !-->
                     <th>{{__('attributes.label.receiver')}}-{{__('attributes.loc.address')}}</th>
                     <th>
-                        @if ($labels->count() > 0)
-                            <form action="{{ route('labelManagement.labelPdfBulk') }}" method="get">
-                                @method('get')
-                                <button type="submit" class="btn btn-success">{{__('messages.buttons.createLabelPdfBulk')}}</button>
-                            </form>
-                        @endif
+                        @can('viewAny', App\Models\Label::class)
+                            @if ($labels->count() > 0)
+                                <form action="{{ route('labelManagement.labelPdfBulk') }}" method="get">
+                                    @method('get')
+                                    <button type="submit" class="btn btn-success">{{__('messages.buttons.createLabelPdfBulk')}}</button>
+                                </form>
+                            @endif
+                        @endcan
                     </th>
                 </tr>
                 </thead>

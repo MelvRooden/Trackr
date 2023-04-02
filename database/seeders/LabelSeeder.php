@@ -15,6 +15,6 @@ class LabelSeeder extends Seeder
      */
     public function run()
     {
-        Label::factory()->count(5)->create();
+        Label::factory()->count(20)->create();
     }
 }

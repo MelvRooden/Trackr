@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         // Super Admin
         User::create([
             'name' => 'Super Admin',
-            'email' => 'superadmin@gmail.com',
+            'email' => 'admin@test.com',
             'password' => Hash::make('password'),
             'address' => 'straatje 1',
             'city' => 'stadje',
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
         // Sender
         User::create([
             'name' => 'Sender',
-            'email' => 'sender@gmail.com',
+            'email' => 'sender@test.com',
             'password' => Hash::make('password'),
             'address' => 'straatje 2',
             'city' => 'stadje',
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
         ]);
         User::create([
             'name' => 'ShopX',
-            'email' => 'ShopX@gmail.com',
+            'email' => 'ShopX@test.com',
             'password' => Hash::make('password'),
             'address' => 'straatje 2',
             'city' => 'stadje',
@@ -49,37 +49,37 @@ class UserSeeder extends Seeder
 
         //Packer
         User::create([
-            'name' => 'Packer',
-            'email' => 'packer@gmail.com',
+            'name' => 'PostNL',
+            'email' => 'postnl@test.com',
             'password' => Hash::make('password'),
-            'address' => 'straatje 3',
-            'city' => 'stadje',
-            'postcode' => '4135GM',
+            'address' => 'Bazeldijk 2',
+            'city' => 'Hoogblokland',
+            'postcode' => '4221XV',
             'role_id' => 3
         ]);
         User::create([
-            'name' => 'PostPackX',
-            'email' => 'PostPackX@gmail.com',
+            'name' => 'DHL',
+            'email' => 'dhl@test.com',
             'password' => Hash::make('password'),
-            'address' => 'straatje 3',
-            'city' => 'stadje',
-            'postcode' => '4135GM',
+            'address' => 'Reactorweg 25',
+            'city' => 'Utrecht',
+            'postcode' => '3542AD',
             'role_id' => 3
         ]);
         User::create([
-            'name' => 'StackSend',
-            'email' => 'StackSend@gmail.com',
+            'name' => 'UPS',
+            'email' => 'ups@test.com',
             'password' => Hash::make('password'),
-            'address' => 'straatje 3',
-            'city' => 'stadje',
-            'postcode' => '4135GM',
+            'address' => 'Achtseweg Noord 14',
+            'city' => 'Eindhoven',
+            'postcode' => '5651GG',
             'role_id' => 3
         ]);
 
         // receiver
         User::create([
             'name' => 'receiver',
-            'email' => 'receiver@gmail.com',
+            'email' => 'receiver@test.com',
             'password' => Hash::make('password'),
             'address' => 'straatje 4',
             'city' => 'stadje',
@@ -88,7 +88,7 @@ class UserSeeder extends Seeder
         ]);
         User::create([
             'name' => 'receiverO',
-            'email' => 'receiverO@gmail.com',
+            'email' => 'receiverO@test.com',
             'password' => Hash::make('password'),
             'address' => 'straatje 4',
             'city' => 'stadje',

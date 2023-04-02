@@ -3,7 +3,7 @@
 @section('content')
     <section class="container">
         <div class="d-flex align-items-center">
-            <h3>{{__('attributes.review.labelByBar')}}</h3>
+            <h3>{{__('attributes.review.leaveReview')}}</h3>
         </div>
         <hr/>
     </section>
@@ -46,8 +46,8 @@
 
             <!-- review !-->
             <div class="form-floating mb-3">
-                <input class="form-control @error('comment', 'store') is-invalid @enderror" name="postcode" placeholder="{{__('attributes.review.comment')}}" dusk="comment" />
-                <label for="postcode">{{__('attributes.review.comment')}}</label>
+                <input class="form-control @error('comment', 'store') is-invalid @enderror" name="comment" placeholder="{{__('attributes.review.comment')}}" dusk="comment" />
+                <label for="comment">{{__('attributes.review.comment')}}</label>
                 @error('comment', 'store')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

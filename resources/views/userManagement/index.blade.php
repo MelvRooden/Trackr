@@ -16,17 +16,11 @@
                         <button onclick="setRoute()" type="submit" class="mt-3 btn btn-success">{{__('messages.buttons.search')}}</button>
                     </form>
             </div>
-
-                <div class="d-flex align-items-center ms-auto me-0">
-                    <a class="btn btn-success modal-button" data-bs-toggle="modal" data-bs-target="#create_modal">
-                        {{__('messages.buttons.uploadCSV')}}
-                    </a>
-                </div>
-                @can('create', App\Models\User::class)
-                    <a class="btn btn-success modal-button" data-bs-toggle="modal" data-bs-target="#create_modal">
-                        {{__('messages.buttons.addUser')}}
-                    </a>
-                @endcan
+            @can('create', App\Models\User::class)
+                <a class="btn btn-success modal-button" data-bs-toggle="modal" data-bs-target="#create_modal">
+                    {{__('messages.buttons.addUser')}}
+                </a>
+            @endcan
         </div>
         <hr/>
     </section>

@@ -39,9 +39,9 @@ class LabelManagementController extends Controller
         } else if ($search_param) {
             $labels = Label::search($search_param)
                 ->where('package_status_id', $search_ps_id)
-                ->where('carrier_user_id', $user_id)
                 ->orWhere('sender_user_id', $user_id)
                 ->orWhere('receiver_user_id',$user_id)
+                ->where('carrier_user_id', $user_id)
                 ->orderBy('carrier_user_id', 'ASC')
                 ->paginate(5);
         } else {
@@ -89,10 +89,10 @@ class LabelManagementController extends Controller
      */
     public function storeCSVFile(StoreCsvRequest $request)
     {
-        $barcode = Label::generateLabelCode();
+        $label = Label::generateLabelCode();
         $packageStatus = PackageStatus::findOrFail(1)->get();
 
-        if ($barcode != null && $packageStatus != null) {
+        if ($label != null && $packageStatus != null) {
             Excel::import(new LabelImportCsv(), $request->file('csvFile'));
         } else {
             return back()->with('messages.error', 'attributes.label.error.added');
