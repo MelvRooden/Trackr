@@ -20,9 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/label', [LabelManagementController::class, 'apiStoreMyLabel'])
+Route::post('/label/create', [LabelManagementController::class, 'apiStoreMyLabel'])
     ->middleware('auth:sanctum');
 
-Route::apiResource('label', LabelManagementController::class)
-//    ->only(['apiGetMyLabels', 'apiStoreMyLabel', 'apiMyLabelStatus'])
-    ->only(['apiStoreMyLabel']);
+Route::post('/label/status', [LabelManagementController::class, 'apiMyLabelStatus'])
+    ->middleware('auth:sanctum');

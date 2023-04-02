@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Business\LabelLogic;
 use App\Business\LabelPdfLogic;
+use App\Http\Requests\Label\StateChangeRequest;
 use App\Http\Requests\Label\StoreCsvRequest;
 use App\Http\Requests\Label\StoreRequest;
 use App\Http\Resources\LabelResource;
@@ -144,14 +145,6 @@ class LabelManagementController extends Controller
     /**
      * @return void
      */
-    public function apiGetMyLabels()
-    {
-
-    }
-
-    /**
-     * @return void
-     */
     public function apiStoreMyLabel(StoreRequest $request) : View|Factory|LabelResource|Application
     {
         $user = $request->user();
@@ -178,8 +171,15 @@ class LabelManagementController extends Controller
     /**
      * @return void
      */
-    public function apiMyLabelStatus()
+    public function apiMyLabelStatus(StateChangeRequest $request)
     {
+        $status_id = PackageStatus::where('name', $request->validated("package_status"))->first()->id;
+        $label = Label::where('barcode_id', $request->validated("barcode_id"))->first();
 
+        $label->package_status_id = $status_id;
+
+        $label->save();
+
+        return $label;
     }
 }
