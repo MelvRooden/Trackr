@@ -35,18 +35,23 @@ return [
 
         'csvUploadInput' => 'Selecteer een CSV bestand',
 
-        'sender' => 'Sender',
-        'receiver' => 'Receiver',
+        'sender' => 'Zender',
+        'receiver' => 'Ontvanger',
+        'pickup' => 'Afhaal',
+        'pickupTime' => 'Afhaal tijd',
         'address' => 'address',
 
         'header' => [
-            'uploadCSV' => 'Upload CSV bestand'
+            'uploadCSV' => 'Upload CSV bestand',
+            'createPickup' => 'Afhaal instellen'
         ],
         'success' => [
-            'added' => 'Label/labels toegevoegd'
+            'added' => 'Label/labels toegevoegd',
+            'addedPickup' => 'Afhaal toegevoegd'
         ],
         'error' => [
-            'added' => 'Label/labels niet toegevoegd'
+            'added' => 'Label/labels niet toegevoegd',
+            'addedPickup' => 'Afhaal niet toegevoegd'
         ],
     ],
     'role' => [

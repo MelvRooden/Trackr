@@ -40,7 +40,12 @@ class Label extends Model
         'receiver_user_id',
         'receiver_address',
         'receiver_postcode',
-        'receiver_city'
+        'receiver_city',
+
+        'pickup_datetime',
+        'pickup_address',
+        'pickup_city',
+        'pickup_postcode'
     ];
 
     protected $guarded = ['íd'];

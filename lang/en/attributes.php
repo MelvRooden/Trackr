@@ -37,16 +37,21 @@ return [
 
         'sender' => 'Sender',
         'receiver' => 'Receiver',
+        'pickup' => 'Pickup',
+        'pickupTime' => 'Pickup time',
         'address' => 'address',
 
         'header' => [
-            'uploadCSV' => 'Upload CSV file'
+            'uploadCSV' => 'Upload CSV file',
+            'createPickup' => 'Add pickup'
         ],
         'success' => [
-            'added' => 'Label/labels added'
+            'added' => 'Label/labels added',
+            'addedPickup' => 'Pickup added'
         ],
         'error' => [
-            'added' => 'Label/labels have not been added'
+            'added' => 'Label/labels have not been added',
+            'addedPickup' => 'Pickup have not been added'
         ],
     ],
     'role' => [

@@ -59,9 +59,10 @@ Route::get('/labelManagementPdf/label/{id?}/pdf', [LabelManagementController::cl
 Route::get('/labelManagementPdf/labelBulk/pdf', [LabelManagementController::class, 'labelPdfBulk'])->can('viewPdfOwn', Label::class)->name('labelManagement.labelPdfBulk');
 /** End: Label management controller */
 
-/** Start: User management controller */
-Route::get('/pickupManagement/setPickup/label/{id}', [LabelManagementController::class, 'labelPdfBulk'])->can('create', Label::class)->name('pickupManagement.setPickup');
-/** End: Label management controller */
+/** Start: Pickup management controller */
+Route::get('/pickupManagement/pickups', [LabelManagementController::class, 'getPickups'])->can('create', Label::class)->name('pickupManagement.getPickups');
+Route::post('/pickupManagement/pickups/set/{id}', [LabelManagementController::class, 'setForPickup'])->can('create', Label::class)->name('pickupManagement.setPickup');
+/** End: Pickup management controller */
 
 /** Start: User management controller */
 Route::get('/userManagement/{role_id?}/{fullText?}', [UserManagementController::class, 'index'])->can('viewAny', User::class)->name('userManagement.index');

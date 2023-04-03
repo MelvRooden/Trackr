@@ -29,6 +29,11 @@ return new class extends Migration
             $table->string('receiver_city');
             $table->string('receiver_postcode');
 
+            $table->string('pickup_datetime')->nullable();
+            $table->string('pickup_address')->nullable();
+            $table->string('pickup_city')->nullable();
+            $table->string('pickup_postcode')->nullable();
+
             $table->timestamps();
         });
 

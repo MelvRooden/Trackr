@@ -31,6 +31,13 @@
                         </li>
                     </ul>
                 @endcan
+                @can('viewPdfOwn', App\Models\Label::class)
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('pickupManagement.getPickups') }}">{{__('messages.nav.pickupManagement')}}</a>
+                        </li>
+                    </ul>
+                @endcan
             @endauth
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">

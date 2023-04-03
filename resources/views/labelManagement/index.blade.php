@@ -43,6 +43,7 @@
                     <th>{{__('attributes.label.sender')}}-{{__('attributes.loc.address')}}</th>
                     <!-- receiver !-->
                     <th>{{__('attributes.label.receiver')}}-{{__('attributes.loc.address')}}</th>
+                    <th>{{__('attributes.label.header.createPickup')}}</th>
                     <th>
                         @can('create', App\Models\Label::class)
                             @if ($labels->count() > 0)
@@ -75,6 +76,9 @@
                             {{ $label->receiver_postcode }}
                         </td>
                         <td>
+                            <button class="btn btn-primary modal-button" data-bs-toggle="modal" data-bs-target="#pickup_create_modal" onclick="setPickupRoute({{ $label->id }})">+</button>
+                        </td>
+                        <td>
                             <form action="{{route('labelManagement.labelPdf', [$label->id])}}" enctype="multipart/form-data" method="get">
                                 @method('get')
                                 <button class="btn btn-primary">{{__('messages.buttons.createLabelPdf')}}</button>
@@ -97,7 +101,14 @@
             let packageStatus = document.getElementById('package_status_input').value;
             document.getElementById('searchForm').action = `/labelManagement/${packageStatus}/${fullText}`;
         }
+
+        function setPickupRoute(id) {
+            document.getElementById('pickupForm').action = `/pickupManagement/pickups/set/${id}`;
+        }
     </script>
 @endsection
 
-@include('labelManagement.modals.csv_upload_modal')
+@can('create', App\Models\User::class)
+    @include('labelManagement.modals.csv_upload_modal')
+    @include('labelManagement.modals.register_pickup_modal')
+@endcan

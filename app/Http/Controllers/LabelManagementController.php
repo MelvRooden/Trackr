@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Business\LabelPdfLogic;
+use App\Http\Requests\Label\SetPickupRequest;
 use App\Http\Requests\Label\StateChangeRequest;
 use App\Http\Requests\Label\StoreCsvRequest;
 use App\Http\Requests\Label\StoreRequest;
@@ -124,9 +125,45 @@ class LabelManagementController extends Controller
         return $logic->createLabelPdf();
     }
 
-    public function setForPickup()
+    public function getPickups()
     {
+        $search_ps_id = 5;
+        $user_id = Auth::id();
 
+        if (Auth::user()->can('viewAny', User::class)) {
+            $labels = Label::where('package_status_id', $search_ps_id)
+                ->orderBy('pickup_datetime', 'ASC')
+                ->paginate(5);
+        } else {
+            $labels = Label::where('sender_user_id', $user_id)
+                ->where('package_status_id', $search_ps_id)
+                ->orWhere('carrier_user_id', $user_id)
+                ->orWhere('receiver_user_id', $user_id)
+                ->orderBy('pickup_datetime', 'ASC')
+                ->paginate(5);
+        }
+
+        return view('pickupManagement.index', ['labels' => $labels]);
+    }
+
+    public function setForPickup(SetPickupRequest $request, $id)
+    {
+        $label = Label::find($id);
+
+        if ($label == null)
+        {
+            return back()->with('messages.error', 'attributes.label.error.addedPickup');
+        }
+
+        $label->package_status_id = 5;
+        $label->pickup_datetime = $request->validated('pickup_datetime');
+        $label->pickup_address = $request->validated('pickup_address');
+        $label->pickup_city = $request->validated('pickup_city');
+        $label->pickup_postcode = $request->validated('pickup_postcodes');
+
+        $label->save();
+
+        return back()->with('messages.success', 'attributes.label.success.addedPickup');
     }
 
     /**

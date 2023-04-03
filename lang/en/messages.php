@@ -15,6 +15,7 @@ return [
     'nav' => [
         'userManagement' => 'User management',
         'labelManagement' => 'Label management',
+        'pickupManagement' => 'Pickup management',
         'myLabelManagement' => 'My Labels',
         'review' => 'Review',
         'labelByBar' => 'Package status',

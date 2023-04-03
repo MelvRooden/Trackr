@@ -14,7 +14,8 @@ return [
 
     'nav' => [
         'userManagement' => 'Gebruikers beheer',
-        'labelManagement' => 'label beheer',
+        'labelManagement' => 'Label beheer',
+        'pickupManagement' => 'Ophaal beheer',
         'myLabelManagement' => 'Mijn labels',
         'review' => 'Beoordeel',
         'labelByBar' => 'Pakketstatus',
