@@ -17,9 +17,9 @@
                     </form>
             </div>
             @can('create', App\Models\User::class)
-                <a class="btn btn-success modal-button" data-bs-toggle="modal" data-bs-target="#create_modal">
+                <button class="btn btn-success modal-button" data-bs-toggle="modal" data-bs-target="#create_modal">
                     {{__('messages.buttons.addUser')}}
-                </a>
+                </button>
             @endcan
         </div>
         <hr/>
@@ -64,8 +64,10 @@
             document.getElementById('searchForm').action = `/userManagement/${role}/${fullText}`;
         }
     </script>
+
+    @can('create', App\Models\User::class)
+        @include('userManagement.modals.create_modal')
+    @endcan
 @endsection
 
-@can('create', App\Models\User::class)
-    @include('userManagement.modals.create_modal')
-@endcan
+

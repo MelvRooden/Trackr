@@ -12,8 +12,6 @@ class LoginTest extends DuskTestCase
 {
     use DatabaseMigrations;
 
-    //TODO: Maybe exchange all DatabaseMigrations for DatabaseTruncation: composer require --dev doctrine/dbal
-
     public bool $seed = true;
 
 
