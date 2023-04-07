@@ -12,7 +12,7 @@
 
                     <!-- name !-->
                     <div class="form-floating mb-3">
-                        <input class="form-control @error('name', 'store') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="{{__('attributes.user.name')}}" dusk="name" />
+                        <input class="form-control @error('name', 'store') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="{{__('attributes.user.name')}}" />
                         <label for="name">{{__('attributes.user.name')}}</label>
                         @error('name', 'store')
                         <span class="invalid-feedback" role="alert">
@@ -23,7 +23,7 @@
 
                     <!-- email !-->
                     <div class="form-floating mb-3">
-                        <input class="form-control @error('email', 'store') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{__('attributes.user.email')}}" dusk="email" />
+                        <input class="form-control @error('email', 'store') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{__('attributes.user.email')}}" />
                         <label for="email">{{__('attributes.user.email')}}</label>
                         @error('email', 'store')
                         <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
 
                     <!-- password !-->
                     <div class="form-floating mb-3">
-                        <input class="form-control @error('password', 'store') is-invalid @enderror" name="password" placeholder="{{__('attributes.user.password')}}" dusk="password" />
+                        <input class="form-control @error('password', 'store') is-invalid @enderror" name="password" placeholder="{{__('attributes.user.password')}}" />
                         <label for="password">{{__('attributes.user.password')}}</label>
                         @error('password', 'store')
                         <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
 
                     <!-- address !-->
                     <div class="form-floating mb-3">
-                        <input class="form-control @error('address', 'store') is-invalid @enderror" name="address" placeholder="{{__('attributes.loc.address')}} 1" dusk="address" />
+                        <input class="form-control @error('address', 'store') is-invalid @enderror" name="address" placeholder="{{__('attributes.loc.address')}} 1" />
                         <label for="address">{{__('attributes.loc.address')}} + {{__('attributes.loc.houseNumber')}}</label>
                         @error('address', 'store')
                         <span class="invalid-feedback" role="alert">
@@ -56,7 +56,7 @@
 
                     <!-- city !-->
                     <div class="form-floating mb-3">
-                        <input class="form-control @error('city', 'store') is-invalid @enderror" name="city" placeholder="{{__('attributes.loc.city')}}" dusk="city" />
+                        <input class="form-control @error('city', 'store') is-invalid @enderror" name="city" placeholder="{{__('attributes.loc.city')}}" />
                         <label for="city">{{__('attributes.loc.city')}}</label>
                         @error('city', 'store')
                         <span class="invalid-feedback" role="alert">
@@ -67,7 +67,7 @@
 
                     <!-- postcode !-->
                     <div class="form-floating mb-3">
-                        <input class="form-control @error('postcode', 'store') is-invalid @enderror" name="postcode" placeholder="{{__('attributes.loc.postcode')}}" dusk="postcode" />
+                        <input class="form-control @error('postcode', 'store') is-invalid @enderror" name="postcode" placeholder="{{__('attributes.loc.postcode')}}" />
                         <label for="postcode">{{__('attributes.loc.postcode')}}</label>
                         @error('postcode', 'store')
                         <span class="invalid-feedback" role="alert">

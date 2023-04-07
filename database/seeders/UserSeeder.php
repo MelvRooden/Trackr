@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -87,8 +86,8 @@ class UserSeeder extends Seeder
             'role_id' => 4
         ]);
         User::create([
-            'name' => 'receiverO',
-            'email' => 'receiverO@test.com',
+            'name' => 'Willy',
+            'email' => 'WillyJhon@test.com',
             'password' => Hash::make('password'),
             'address' => 'straatje 4',
             'city' => 'stadje',
@@ -96,6 +95,6 @@ class UserSeeder extends Seeder
             'role_id' => 4
         ]);
 
-//        User::factory()->count(2)->create();
+        User::factory()->count(10)->create(['role_id' => 4]);
     }
 }
