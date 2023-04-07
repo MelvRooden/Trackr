@@ -1,4 +1,4 @@
-<div class="modal fade" id="create_modal" tabindex="-1" role="dialog" aria-labelledby="create_modal" aria-hidden="true">
+<div class="modal fade" id="csv_upload_modal" tabindex="-1" role="dialog" aria-labelledby="csv_upload_modal" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,7 +13,7 @@
                     <!-- csv !-->
                     <div class="form-floating mb-3">
                         <input class="form-control @error('csvFile', 'store') is-invalid @enderror" name="csvFile" type="file"
-                               placeholder="{{__('attributes.label.csvUploadInput')}}" dusk="csvFile" required />
+                               placeholder="{{__('attributes.label.csvUploadInput')}}" required />
                         <label for="csvFile">{{__('attributes.label.csvUploadInput')}}</label>
                         @error('csvFile', 'store')
                         <span class="invalid-feedback" role="alert">

@@ -36,6 +36,7 @@ class CreateTest extends DuskTestCase
                 ->type('postcode', '1234AB')
                 ->select('role_id', 4)
                 ->press('Create')
+                ->waitForText('User management')
                 ->assertPathIs('/userManagement')
                 ->assertSee($email);
         });

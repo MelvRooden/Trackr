@@ -6,8 +6,8 @@
             <h3>{{__('messages.nav.labelManagement')}}</h3>
 
             <div class="d-flex align-items-center ms-auto me-0">
-                <input class="form-control" id="fullText_input" name="search_param" value="" placeholder="{{__('messages.searchText')}}" dusk="fullText_input" />
-                <select id="package_status_input" class="form-select" name="package_status_input" dusk="package_status">
+                <input class="form-control" id="fullText_input" name="search_param" value="" placeholder="{{__('messages.searchText')}}" />
+                <select id="package_status_input" class="form-select" name="package_status_input">
                     @foreach($package_statuses as $package_status)
                         <option value="{{ $package_status->id }}" >{{__('attributes.packageStatus.' . $package_status->name)}}</option>
                     @endforeach
@@ -20,9 +20,9 @@
 
             @can('create', App\Models\Label::class)
                 <div class="d-flex align-items-center ms-auto me-0">
-                    <a class="btn btn-success modal-button" data-bs-toggle="modal" data-bs-target="#create_modal">
+                    <button class="btn btn-success modal-button" data-bs-toggle="modal" data-bs-target="#csv_upload_modal">
                         {{__('messages.buttons.uploadCSV')}}
-                    </a>
+                    </button>
                 </div>
             @endcan
         </div>
@@ -106,9 +106,10 @@
             document.getElementById('pickupForm').action = `/pickupManagement/pickups/set/${id}`;
         }
     </script>
-@endsection
 
-@can('create', App\Models\User::class)
-    @include('labelManagement.modals.csv_upload_modal')
-    @include('labelManagement.modals.register_pickup_modal')
-@endcan
+    @can('create', App\Models\Label::class)
+        @include('labelManagement.modals.csv_upload_modal')
+        @include('labelManagement.modals.register_pickup_modal')
+    @endcan
+
+@endsection
