@@ -9,10 +9,10 @@
     </section>
 
     <section class="container">
-        <form action="">
+        <form action="{{ route('review.index') }}">
             <!-- name !-->
             <div class="form-floating mb-3">
-                <input class="form-control @error('name', 'store') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="{{__('attributes.user.name')}}" dusk="name" required />
+                <input class="form-control @error('name', 'store') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="{{__('attributes.user.name')}}" required />
                 <label for="name">{{__('attributes.user.name')}}</label>
                 @error('name', 'store')
                 <span class="invalid-feedback" role="alert">
@@ -23,7 +23,7 @@
 
             <!-- email !-->
             <div class="form-floating mb-3">
-                <input class="form-control @error('email', 'store') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{__('attributes.user.email')}}" dusk="email" required />
+                <input class="form-control @error('email', 'store') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{__('attributes.user.email')}}" required />
                 <label for="email">{{__('attributes.user.email')}}</label>
                 @error('email', 'store')
                 <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
 
             <!-- review !-->
             <div class="form-floating mb-3">
-                <input class="form-control @error('comment', 'store') is-invalid @enderror" name="comment" placeholder="{{__('attributes.review.comment')}}" dusk="comment" />
+                <input class="form-control @error('comment', 'store') is-invalid @enderror" name="comment" placeholder="{{__('attributes.review.comment')}}" />
                 <label for="comment">{{__('attributes.review.comment')}}</label>
                 @error('comment', 'store')
                     <span class="invalid-feedback" role="alert">
@@ -56,7 +56,7 @@
             </div>
 
             <div>
-                <a href="/" class="btn btn-success">{{__('attributes.review.leaveReview')}}</a>
+                <button href="/" class="btn btn-success">{{__('attributes.review.leaveReview')}}</button>
             </div>
         </form>
     </section>

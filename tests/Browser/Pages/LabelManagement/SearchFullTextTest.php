@@ -15,7 +15,7 @@ class SearchFullTextTest extends DuskTestCase
 
     public function testFullTextSearch()
     {
-        $label = Label::factory(1)->create()->first();
+        $label = Label::where('package_status_id', 1)->first();
 
         $this->browse(function (Browser $browser) use ($label) {
             $browser->loginAs('admin@test.com')
