@@ -48,19 +48,25 @@ class LabelManagementController extends Controller
                 {
                     $labels = $labels->toQuery()
                         ->where('package_status_id', $search_ps_id)
-                        ->where('sender_user_id', $user_id)
-                        ->orWhere('carrier_user_id', $user_id)
-                        ->orWhere('receiver_user_id', $user_id)
+                        ->where(function($q) use ($user_id)
+                        {
+                            $q->Where('sender_user_id', $user_id)
+                                ->orWhere('carrier_user_id', $user_id)
+                                ->orwhere('receiver_user_id', $user_id);
+                        })
                         ->orderBy('carrier_user_id', 'ASC')
                         ->paginate(5);
                 } else {
                     $labels = Label::where('barcode_id', '')->paginate(5);
                 }
         } else {
-            $labels = Label::where('sender_user_id', $user_id)
-                ->where('package_status_id', $search_ps_id)
-                ->orWhere('carrier_user_id', $user_id)
-                ->orWhere('receiver_user_id', $user_id)
+            $labels = Label::where('package_status_id', $search_ps_id)
+                ->where(function($q) use ($user_id)
+                {
+                    $q->Where('sender_user_id', $user_id)
+                        ->orWhere('carrier_user_id', $user_id)
+                        ->orwhere('receiver_user_id', $user_id);
+                })
                 ->orderBy('carrier_user_id', 'ASC')
                 ->paginate(5);
         }
@@ -135,10 +141,13 @@ class LabelManagementController extends Controller
                 ->orderBy('pickup_datetime', 'ASC')
                 ->paginate(5);
         } else {
-            $labels = Label::where('sender_user_id', $user_id)
-                ->where('package_status_id', $search_ps_id)
-                ->orWhere('carrier_user_id', $user_id)
-                ->orWhere('receiver_user_id', $user_id)
+            $labels = Label::where('package_status_id', $search_ps_id)
+                ->where(function($q) use ($user_id)
+                {
+                    $q->Where('sender_user_id', $user_id)
+                        ->orWhere('carrier_user_id', $user_id)
+                        ->orwhere('receiver_user_id', $user_id);
+                })
                 ->orderBy('pickup_datetime', 'ASC')
                 ->paginate(5);
         }
