@@ -3,11 +3,11 @@
 @section('content')
     <section class="container">
         <div class="d-flex align-items-center">
-            <h3>{{__('messages.nav.labelManagement')}}</h3>
+            <h3>{{__('messages.nav.labelByBar')}}</h3>
             <div class="d-flex align-items-center ms-auto me-0">
-                <a class="btn btn-success modal-button" data-bs-toggle="modal" data-bs-target="#create_modal">
+                <button class="btn btn-success modal-button" data-bs-toggle="modal" data-bs-target="#create_modal">
                     {{__('messages.buttons.searchBar')}}
-                </a>
+                </button>
             </div>
         </div>
         <hr/>

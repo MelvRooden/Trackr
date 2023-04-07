@@ -43,7 +43,9 @@ return [
 
         'header' => [
             'uploadCSV' => 'Upload CSV bestand',
-            'createPickup' => 'Afhaal instellen'
+            'createPickup' => 'Afhaal instellen',
+            'labelByBar' => 'Status van barcode',
+            'findByBar' => 'Vind status met barcode'
         ],
         'success' => [
             'added' => 'Label/labels toegevoegd',

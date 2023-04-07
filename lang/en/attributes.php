@@ -43,7 +43,9 @@ return [
 
         'header' => [
             'uploadCSV' => 'Upload CSV file',
-            'createPickup' => 'Add pickup'
+            'createPickup' => 'Add pickup',
+            'labelByBar' => 'Status of barcode',
+            'findByBar' => 'Find status by barcode'
         ],
         'success' => [
             'added' => 'Label/labels added',
