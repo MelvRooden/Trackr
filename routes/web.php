@@ -60,7 +60,7 @@ Route::get('/labelManagementPdf/labelBulk/pdf', [LabelManagementController::clas
 /** End: Label management controller */
 
 /** Start: Pickup management controller */
-Route::get('/pickupManagement/pickups', [LabelManagementController::class, 'getPickups'])->can('create', Label::class)->name('pickupManagement.getPickups');
+Route::get('/pickupManagement/pickups', [LabelManagementController::class, 'getPickups'])->can('viewOwnPickups', Label::class)->name('pickupManagement.getPickups');
 Route::post('/pickupManagement/pickups/set/{id}', [LabelManagementController::class, 'setForPickup'])->can('create', Label::class)->name('pickupManagement.setPickup');
 /** End: Pickup management controller */
 

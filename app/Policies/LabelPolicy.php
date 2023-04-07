@@ -23,12 +23,6 @@ class LabelPolicy
         return false;
     }
 
-    /**
-     * Determine whether the user can view the owned models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
     public function viewAnyOwn(User $user)
     {
         if ($user->isSuperAdmin()) return true;
@@ -39,13 +33,16 @@ class LabelPolicy
         return false;
     }
 
-    /**
-     * Determine whether the user can view the owned models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
     public function viewPdfOwn(User $user)
+    {
+        if ($user->isSuperAdmin()) return true;
+        if ($user->isSender()) return true;
+        if ($user->isCarrier()) return true;
+
+        return false;
+    }
+
+    public function viewOwnPickups(User $user)
     {
         if ($user->isSuperAdmin()) return true;
         if ($user->isSender()) return true;
