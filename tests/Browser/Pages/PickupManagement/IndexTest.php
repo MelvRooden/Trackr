@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Browser\Pages\UserManagement;
+namespace Tests\Browser\Pages\PickupManagement;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
@@ -23,11 +23,9 @@ class IndexTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs('admin@test.com')
-                ->visit('/userManagement')
+                ->visit('/pickupManagement/pickups')
                 ->assertAuthenticated()
-                ->assertSee('User management')
-                ->assertSee('Receiver')
-                ->assertSee('receiver@test.com');
+                ->assertSee('Pickup management');
         });
 
         $this->clearCookies();
@@ -37,9 +35,9 @@ class IndexTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs('sender@test.com')
-                ->visit('/userManagement')
+                ->visit('/pickupManagement/pickups')
                 ->assertAuthenticated()
-                ->assertSee('403');
+                ->assertSee('Pickup management');
         });
 
         $this->clearCookies();
@@ -49,9 +47,9 @@ class IndexTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs('postnl@test.com')
-                ->visit('/userManagement')
+                ->visit('/pickupManagement/pickups')
                 ->assertAuthenticated()
-                ->assertSee('403');
+                ->assertSee('Pickup management');
         });
 
         $this->clearCookies();
@@ -61,7 +59,7 @@ class IndexTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs('receiver@test.com')
-                ->visit('/userManagement')
+                ->visit('/pickupManagement/pickups')
                 ->assertAuthenticated()
                 ->assertSee('403');
         });
@@ -72,11 +70,10 @@ class IndexTest extends DuskTestCase
     public function testNoAuthNoViewRights()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/userManagement')
+            $browser->visit('/pickupManagement/pickups')
                 ->assertSee('403');
         });
 
         $this->clearCookies();
     }
 }
-

@@ -61,17 +61,4 @@
         </form>
     </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 @endsection
